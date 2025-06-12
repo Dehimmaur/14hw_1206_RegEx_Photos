@@ -1,7 +1,6 @@
 package telran.regex.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +24,6 @@ class PhotoParseTest {
             "Chicago\\20150301_120001.png",
             "Chicago\\20151111_232000.png"
             """;
-
 
     @BeforeEach
     void setUp() {
@@ -117,8 +115,5 @@ class PhotoParseTest {
         };
         assertArrayEquals(res2, p.getPhotosByType(FILE_DATA, "jpg"));
     }
-
-
-
 }
 
