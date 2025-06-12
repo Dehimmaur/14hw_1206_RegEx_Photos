@@ -126,7 +126,7 @@ class PhotoParseTest {
                 "Chicago\\20150301_120001.png",
                 "Chicago\\20151111_232000.png"
         };
-        assertArrayEquals(res3,p.getPhotosByType(FILE_DATA, "png", "jpg"));
+        assertArrayEquals(res3,p.getPhotosByType(FILE_DATA, "jpg", "png"));
     }
 }
 
