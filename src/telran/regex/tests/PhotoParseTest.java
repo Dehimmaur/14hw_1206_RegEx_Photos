@@ -55,7 +55,7 @@ class PhotoParseTest {
                 "London\\20151001_231035.jpg",
                 "Chicago\\20151111_232000.png"
         };
-        assertArrayEquals(res, p.getAutumnPictures(FILE_DATA));
+        assertArrayEquals(res, p.getPicturesBySeason(FILE_DATA, "Autumn"));
     }
 
     @Test

@@ -8,14 +8,20 @@ public class PhotoParse {
 
     public String[] getEuropPlaces(String str) {
         String[] strsAll = str.split(",\\n");
-        String patternEuropPlaces = "^(Paris|London)\\\\.*$";
+        String patternEuropPlaces = "^(Paris|London|Amsterdam|Brussels|Madrid|Lisbon)\\\\.*$";
         return makeRegEx(strsAll, patternEuropPlaces);
     }
 
-    public String[] getAutumnPictures(String str){
+    public String[] getPicturesBySeason(String str, String season){
         String[] strsAll = str.split(",\\n");
-        String patternAutumn = "^.+\\\\\\d{4}(09|10|11)\\d{2}_\\d{6}\\..+$";
-        return makeRegEx(strsAll, patternAutumn);
+        String patternSeason = switch (season) {
+            case "Autumn" -> "^.+\\\\\\d{4}(09|10|11)\\d{2}_\\d{6}\\..+$";
+            case "Winter" -> "^.+\\\\\\d{4}(01|02|12)\\d{2}_\\d{6}\\..+$";
+            case "Summer" -> "^.+\\\\\\d{4}(06|07|08)\\d{2}_\\d{6}\\..+$";
+            case "Spring" -> "^.+\\\\\\d{4}(03|04|05)\\d{2}_\\d{6}\\..+$";
+            default -> "";
+        };
+        return makeRegEx(strsAll, patternSeason);
     }
 
     public String[] getPhotosByYear(String str, int year) {
