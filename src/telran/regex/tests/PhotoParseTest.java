@@ -114,6 +114,19 @@ class PhotoParseTest {
                 "London\\20151001_231035.jpg"
         };
         assertArrayEquals(res2, p.getPhotosByType(FILE_DATA, "jpg"));
+        String[] res3 = {"Paris\\20140101_090000.jpg",
+                "Paris\\20140201_121005.jpg",
+                "Paris\\20150301_211035.jpg",
+                "Paris\\20150401_181705.jpg",
+                "London\\20140205_090000.jpg",
+                "London\\20140205_121005.jpg",
+                "London\\20151001_110023.jpg",
+                "London\\20151001_121705.jpg",
+                "London\\20151001_231035.jpg",
+                "Chicago\\20150301_120001.png",
+                "Chicago\\20151111_232000.png"
+        };
+        assertArrayEquals(res3,p.getPhotosByType(FILE_DATA, "png", "jpg"));
     }
 }
 

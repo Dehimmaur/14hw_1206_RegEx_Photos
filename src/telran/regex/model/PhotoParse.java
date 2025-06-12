@@ -50,6 +50,12 @@ public class PhotoParse {
         return makeRegEx(strsAll, patternType);
     }
 
+    public String[] getPhotosByType(String str, String type1, String type2){
+        String[] strsAll = str.split(",\\n");
+        String patternType = ".*\\\\.*[" + type1 + "|" + type2 + "]$";
+        return makeRegEx(strsAll, patternType);
+    }
+
     private String[] makeRegEx(String[] strs, String pattern){
         int count = 0;
         for (int i = 0; i <= strs.length-1; i++){
