@@ -2,7 +2,6 @@ package telran.regex.tests;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static telran.regex.model.PhotoSelector.selectPictures;
 
@@ -21,7 +20,7 @@ public class PhotoSelectorTest {
             "London\\20151001_121705.jpg",				
             "London\\20151001_231035.jpg",
             "Chicago\\20150301_120001.png",
-            "Chicago\\20151111_232000.png
+            "Chicago\\20151111_232000.png"
             """;
 
 
@@ -94,7 +93,28 @@ public class PhotoSelectorTest {
 
     @Test
     void testNightChicagoPictures(){
+        String regex = "(Chicago\\\\\\d{8}_(1[8-9]|2[0-3])\\d{4}\\.(jpg|png|gif))";
+        String actual = selectPictures(FILE_DATA, regex);
+        String expected = "\"Chicago\\20151111_232000.png\"";
+        assertEquals(expected, actual);
+    }
 
-        
+    @Test
+    void testJpgPng() {
+        String regex = "[A-Za-z]+.*?\\\\.*?\\.(jpg|png)";
+        String actual = selectPictures(FILE_DATA, regex);
+        String expected = """
+            "Paris\\20140101_090000.jpg",
+            "Paris\\20140201_121005.jpg",
+            "Paris\\20150301_211035.jpg",
+            "Paris\\20150401_181705.jpg",
+            "London\\20140205_090000.jpg",
+            "London\\20140205_121005.jpg",
+            "London\\20151001_110023.jpg",
+            "London\\20151001_121705.jpg",
+            "London\\20151001_231035.jpg",
+            "Chicago\\20150301_120001.png",
+            "Chicago\\20151111_232000.png\"""";
+        assertEquals(expected, actual);
     }
 }
